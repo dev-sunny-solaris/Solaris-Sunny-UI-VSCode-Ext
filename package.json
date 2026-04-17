@@ -1,0 +1,24 @@
+{
+  "name": "solar-ui",
+  "displayName": "Solar UI",
+  "description": "Blade component intellisense for Solaris packages",
+  "version": "0.1.0",
+  "publisher": "solaris-internal",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["workspaceContains:composer.json"],
+  "main": "./out/extension.js",
+  "contributes": {},
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.3.0"
+  }
+}
