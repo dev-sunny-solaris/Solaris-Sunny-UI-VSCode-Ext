@@ -16,7 +16,12 @@ interface DocsFile {
 }
 
 export function mergeDocsIntoMeta(meta: ComponentMeta): ComponentMeta {
-    const docsPath = meta.filePath.replace(/\.blade\.php$/, '.docs.json');
+    const parts = meta.filePath.split(path.sep);
+    const componentsIdx = parts.lastIndexOf('components');
+    const docsPathParts = componentsIdx === -1
+        ? parts
+        : [...parts.slice(0, componentsIdx + 1), 'docs', ...parts.slice(componentsIdx + 1)];
+    const docsPath = docsPathParts.join(path.sep).replace(/\.blade\.php$/, '.docs.json');
 
     if (!fs.existsSync(docsPath)) {
         return meta;
